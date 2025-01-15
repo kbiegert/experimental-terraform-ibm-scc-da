@@ -414,11 +414,11 @@
           "dependencies": [
             {
               "name": "testing-deploy-arch-ibm-kms",
-              "id": "85fdbd7a-8c77-4abd-b716-653a31f3aba9-global",
+              "id": "8617dc05-f1f4-479b-8b38-ef6b04002148",
               "flavors": [
                 "standard"
               ],
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "catalog_id": "9212a6da-ac9b-4f3c-94d8-83a866e1a250",
               "input_mapping": [
                 {
                   "dependency_output": "kms_instance_crn",
@@ -436,11 +436,11 @@
             },
             {
               "name": "deploy-arch-ibm-account-infra-base",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "catalog_id": "0fbd7aba-de09-43bf-b848-ade81f4ad0ff",
               "flavors": [
                 "standard"
               ],
-              "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+              "id": "9fcd1945-8ebc-4072-85dc-6400653e7077-global",
               "input_mapping": [
                 {
                   "dependency_output": "audit_resource_group_name",
@@ -449,6 +449,10 @@
                 {
                   "version_input": "use_existing_resource_group",
                   "value": true
+                },
+                {
+                  "dependency_input": "existing_audit_resource_group_name",
+                  "value": "Default"
                 }
               ],
               "optional": true,
@@ -457,11 +461,11 @@
             },
             {
               "name": "testing-deploy-arch-ibm-event-notifications",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "catalog_id": "9212a6da-ac9b-4f3c-94d8-83a866e1a250",
               "flavors": [
                 "standard"
               ],
-              "id": "1f6f1af5-185e-4ae7-9b42-4c64e42728f6-global",
+              "id": "931dc93f-dcdc-401e-aefa-04eb7a3f420d",
               "input_mapping": [
                 {
                   "dependency_output": "crn",
@@ -480,10 +484,10 @@
             {
               "name": "testing-deploy-arch-ibm-observability",
               "flavors": [
-                "instances"
+                "standard"
               ],
-              "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "id": "5a722ff3-440a-49d4-b149-19e794bc10ca",
+              "catalog_id": "9212a6da-ac9b-4f3c-94d8-83a866e1a250",
               "input_mapping": [{
                 "dependency_output": "cloud_monitoring_crn",
                 "version_input": "existing_monitoring_crn"
