@@ -4,7 +4,7 @@ resource "time_sleep" "wait_7_seconds" {
 }
 
 output "resource_group_name" {
-    value       = "resource_group_name"
+    value       = var.resource_group_name
 }
 
 output "resource_group_id" {
@@ -64,7 +64,7 @@ output "scc_cos_kms_key_crn" {
 }
 
 output "scc_cos_bucket_name" {
-    value       = "scc_cos_bucket_name"
+    value       = var.scc_cos_bucket_name
 }
 
 output "scc_cos_bucket_config" {
