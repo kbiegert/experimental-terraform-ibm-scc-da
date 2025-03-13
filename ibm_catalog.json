@@ -89,7 +89,8 @@
             },
             {
               "key": "prefix",
-              "required": true
+              "required": true,
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can enter the string `__NULL__`."
             },
             {
               "key": "existing_monitoring_crn",
@@ -274,6 +275,10 @@
               "required": false
             },
             {
+              "key": "en_source_description",
+              "required": false
+            },
+            {
               "key": "scc_instance_tags",
               "required": false
             },
@@ -346,7 +351,7 @@
               "required": false
             },
             {
-              "key": "existing_activity_tracker_crn",
+              "key": "ibmcloud_kms_api_key",
               "required": false
             },
             {
@@ -359,6 +364,10 @@
             },
             {
               "key": "scc_en_reply_to_email",
+              "required": false
+            },
+            {
+              "key": "cbr_rules",
               "required": false
             }
           ],
@@ -381,7 +390,8 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "kms"
+              "service_name": "kms",
+              "notes": "Additional information regarding this role and service may be found in documents somewhere."
             }
           ],
           "architecture": {
@@ -425,10 +435,18 @@
                   "version_input": "existing_kms_instance_crn"
                 },
                 {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
+                },
+                {
                   "dependency_input": "region",
                   "version_input": "scc_region",
                   "reference_version": true
                 }
+              ],
+              "ignore_auto_referencing": [
+                "*"
               ],
               "optional": true,
               "on_by_default": true,
@@ -453,7 +471,15 @@
                 {
                   "dependency_input": "existing_audit_resource_group_name",
                   "value": "Default"
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
                 }
+              ],
+              "ignore_auto_referencing": [
+                "*"
               ],
               "optional": true,
               "on_by_default": true,
@@ -475,7 +501,15 @@
                   "dependency_input": "region",
                   "version_input": "scc_region",
                   "reference_version": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
                 }
+              ],
+              "ignore_auto_referencing": [
+                "*"
               ],
               "optional": true,
               "on_by_default": true,
@@ -488,15 +522,25 @@
               ],
               "id": "5a722ff3-440a-49d4-b149-19e794bc10ca",
               "catalog_id": "9212a6da-ac9b-4f3c-94d8-83a866e1a250",
-              "input_mapping": [{
-                "dependency_output": "cloud_monitoring_crn",
-                "version_input": "existing_monitoring_crn"
-              },
-              {
-                "dependency_input": "region",
-                "version_input": "scc_region",
-                "reference_version": true
-              }],
+              "input_mapping": [
+                {
+                  "dependency_output": "cloud_monitoring_crn",
+                  "version_input": "existing_monitoring_crn"
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "scc_region",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
+                }
+              ],
+              "ignore_auto_referencing": [
+                "*"
+              ],
               "optional": true,
               "on_by_default": true,
               "version": "^1.0.7"
